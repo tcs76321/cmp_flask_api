@@ -20,5 +20,15 @@ def singleMetabolite(metabolite, level):
         return "Your level value doesn't seem to be a number"
 
 
+@app.route("/comprehensive/version1", methods=["GET", "POST"])
+def fullCMP():
+    try:
+        # verify data
+
+        return fullAnalysis()
+    except Exception:
+        return "something went wrong"
+
+
 if __name__ == '__main__':
     app.run()
