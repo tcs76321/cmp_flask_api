@@ -20,12 +20,15 @@ def singleMetabolite(metabolite, level):
         return "Your level value doesn't seem to be a number"
 
 
-@app.route("/comprehensive/version1", methods=["GET", "POST"])
+@app.route("/comprehensive/version1", methods=["POST"])
 def fullCMP():
     try:
-        # verify data
-
-        return fullAnalysis()
+        content_type = request.headers.get('Content-Type')
+        if content_type == 'application/json':
+            json = request.json
+            return fullAnalysis(json)
+        else:
+            return 'Content-Type not supported!'
     except Exception:
         return "something went wrong"
 
