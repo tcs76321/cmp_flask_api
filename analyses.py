@@ -45,6 +45,6 @@ def singleAnalysis(metabolite, level):
 
 
 def fullAnalysis(json):
-    response = jsonify("in development")
+    response = json
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
