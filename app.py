@@ -27,8 +27,7 @@ def fullCMP():
     try:
         content_type = request.headers.get('Content-Type')
         if content_type == 'application/json':
-            json = request.json
-            return fullAnalysis(json)
+            return fullAnalysis(request.get_data())
         else:
             return 'Content-Type not supported!'
     except Exception:

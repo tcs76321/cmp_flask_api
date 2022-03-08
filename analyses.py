@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import json
 
 
 def singleAnalysis(metabolite, level):
@@ -44,7 +45,12 @@ def singleAnalysis(metabolite, level):
     return response
 
 
-def fullAnalysis(json):
-    response = jsonify(json)
+def fullAnalysis(cmp):
+    metabolites = json.loads(cmp)
+
+    for m in metabolites:
+        m['result'] = "changed"
+
+    response = jsonify(metabolites)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
