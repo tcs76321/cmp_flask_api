@@ -1,9 +1,11 @@
 from flask import render_template
+from flask_cors import CORS
 
 from analyses import *
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+CORS(app)
 
 
 @app.route('/')
